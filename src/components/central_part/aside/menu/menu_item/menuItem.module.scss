@@ -1,0 +1,21 @@
+.menu_item {
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+
+  &:hover {
+    color: #fff;
+    box-shadow: 0 0 2px 1px  #ffbffd;
+    transform: scale(1.04);
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+    color: #ffbffd;
+
+    &.active {
+      color: blueviolet;
+    }
+  }
+}

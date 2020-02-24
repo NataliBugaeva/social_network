@@ -1,0 +1,8 @@
+.image {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden; }
+  .image img {
+    display: inline-block; }

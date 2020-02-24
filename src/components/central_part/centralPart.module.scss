@@ -1,0 +1,9 @@
+.central_part {
+  display: flex;
+  margin: 5px 0;
+
+  &_content {
+    width: 68%;
+    margin-left: 2%;
+  }
+}

@@ -1,0 +1,14 @@
+.menu_item {
+  text-align: center;
+  margin: 5px;
+  padding: 5px; }
+  .menu_item:hover {
+    color: #fff;
+    box-shadow: 0 0 2px 1px  #ffbffd;
+    transform: scale(1.04);
+    cursor: pointer; }
+  .menu_item a {
+    text-decoration: none;
+    color: #ffbffd; }
+    .menu_item a.active {
+      color: blueviolet; }

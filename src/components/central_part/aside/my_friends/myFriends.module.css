@@ -1,0 +1,22 @@
+.my_friends {
+  width: 100%; }
+  .my_friends h2 {
+    margin: 150px 0 20px;
+    text-align: center; }
+
+.friends {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; }
+
+.friends_amount {
+  display: flex;
+  margin-top: 20px; }
+  .friends_amount a {
+    text-decoration: none;
+    color: #ffbffd; }
+    .friends_amount a:hover {
+      color: blueviolet; }
+
+.amount {
+  margin-left: 20px; }

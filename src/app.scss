@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+button:focus {
+  outline-style: none;
+  outline-width: 0 !important;
+}
+
+h2 {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 0;
+  background-color: #beb7fb;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.app {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
