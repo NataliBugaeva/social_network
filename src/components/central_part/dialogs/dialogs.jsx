@@ -1,8 +1,8 @@
 import React from 'react';
 import n from './dialogs.module.css';
 
-import AllDialogs from "./all_dialogs/allDialogs";
 import AllMessagesContainer from "./all_messages/allMessagesContainer";
+import AllDialogsContainer from "./all_dialogs/allialogsContainer";
 
 const Dialogs = (props) => {
     return (
@@ -10,7 +10,7 @@ const Dialogs = (props) => {
            {/* <AllDialogs store={props.store} />
             <AllMessagesContainer store={props.store} />*/}
 
-            <AllDialogs />
+            <AllDialogsContainer />
             <AllMessagesContainer />
         </div>
     );

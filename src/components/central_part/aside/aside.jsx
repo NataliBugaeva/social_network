@@ -4,7 +4,7 @@ import n from './aside.module.css';
 
 import Menu from "./menu/menu";
 
-import MyFriends from "./my_friends/myFriends";
+import MyFriendsContainer from "./my_friends/myFriendsContainer";
 
 const Aside = (props) => {
 
@@ -13,7 +13,7 @@ const Aside = (props) => {
 
             <Menu />
             {/*<MyFriends state={props.state.asidePart.friends} />*/}
-            <MyFriends />
+            <MyFriendsContainer />
 
         </aside>
     );

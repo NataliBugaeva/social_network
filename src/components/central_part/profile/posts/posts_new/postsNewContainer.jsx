@@ -2,9 +2,13 @@ import React from 'react';
 import PostsNew from "./postsNew";
 
 import {showNewPostActionCreator, onPostChangeActionCreator} from "../../../../../redux/profilePageReducer";
-import StoreContext from "../../../../../storeContext";
 
-const PostNewContainer = (props) => {
+import {connect} from "react-redux";
+
+/*import mapStateToProps from "react-redux/lib/connect/mapStateToProps";
+import mapDispatchToProps from "react-redux/lib/connect/mapDispatchToProps";*/
+
+
 
  /*   //postNewText будем перегонять через пропсы для postNew, чтобы там небыло никакого взаимодействия со стором
     let postNewText = props.store.getState().profilePage.postNewText;*/
@@ -19,7 +23,7 @@ const PostNewContainer = (props) => {
         props.store.dispatch(onPostChangeActionCreator(text));
     };*/
 
-
+/*const PostNewContainer = (props) => {
     return (
         <StoreContext.Consumer>
             {
@@ -40,6 +44,25 @@ const PostNewContainer = (props) => {
             }
         </StoreContext.Consumer>
         );
+};*/
+let mapStateToProps = (state) => {
+    return {
+        postNewText: state.profilePage.postNewText
+    }
 };
 
-export default PostNewContainer;
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: () => {
+            dispatch(showNewPostActionCreator());
+        },
+
+        changePost: (text) => {
+            dispatch(onPostChangeActionCreator(text));
+        }
+    }
+};
+
+const PostsNewContainer = connect(mapStateToProps, mapDispatchToProps)(PostsNew);
+
+export default PostsNewContainer;

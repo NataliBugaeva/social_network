@@ -9,12 +9,15 @@ import store from './redux/reduxStore';
 
 import App from "./app";
 
-import {Provider} from "./storeContext";
+/*import {Provider} from "./storeContext";*/
+
+import {Provider} from 'react-redux';
+
 
 //в rerender в параметр надо передеть state, но так как это приватное свойство, мы в параметре вызовем из store метод getState
 
 
-let rerender = (state) => {
+let rerender = () => {
     ReactDOM.render(
        <BrowserRouter>
            <Provider store={store}>
@@ -25,11 +28,10 @@ let rerender = (state) => {
     );
 };
 
-rerender(store.getState());
+rerender();
 
 store.subscribe( () => {
-    let state = store.getState();
-    rerender(state);
+    rerender();
 });
 
 // If you want your app to work offline and load faster, you can change

@@ -2,7 +2,8 @@ import React from 'react';
 import n from './posts.module.css';
 
 import PostsNewContainer from "./posts_new/postsNewContainer";
-import PostsAvailable from "./posts_available/postsAvailable";
+import PostsAvailableContainer from "./posts_available/postsAvailableContainer";
+
 
 const Posts = (props) => {
     return (
@@ -11,7 +12,7 @@ const Posts = (props) => {
             <PostsAvailable store={props.store}/>*/}
 
             <PostsNewContainer />
-            <PostsAvailable />
+            <PostsAvailableContainer />
         </div>
     );
 }
