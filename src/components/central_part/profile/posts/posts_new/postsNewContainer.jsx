@@ -45,6 +45,7 @@ import mapDispatchToProps from "react-redux/lib/connect/mapDispatchToProps";*/
         </StoreContext.Consumer>
         );
 };*/
+
 let mapStateToProps = (state) => {
     return {
         postNewText: state.profilePage.postNewText

@@ -27,24 +27,58 @@ let initialState = {
 
 };
 
-const profilePageReducer = (state = initialState, action) => {
+/*const profilePageReducer = (state = initialState, action) => {
     //здесь не ставим break, потому что есть в каждом case return(полюбому выходим из switch)
     switch (action.type) {
 
-        case ADD_NEW_POST:
+        case ADD_NEW_POST: {
             let newPost = {
                 id: 5,
                 text: state.postNewText,
                 src: 'https://avatarko.ru/img/avatar/11/zhivotnye_suslik_10489.jpg'
             };
+             // создаем копию state - stateCopy
+            let stateCopy = {...state};
+            stateCopy.posts = [...state.posts];
 
-            state.posts.push(newPost);
-            state.postNewText = '';
-            return state;
+            stateCopy.posts.push(newPost);
+            stateCopy.postNewText = '';
+            return stateCopy;
+        }
+
+
+        case UPDATE_POST_NEW_TEXT: {
+            // создаем копию state - stateCopy
+            let stateCopy = {...state};
+            stateCopy.postNewText = action.newText;
+            return stateCopy;
+        }
+        default: return state;
+    }
+};*/
+
+//наша задача менять не сам state, а его копию. И возвращать потом эту измененную копию, поэтому рефакторим код следующим образом
+//в каждом case делаем свою копию и возвращаем ее сразу же(все действия сразу в return)
+//мы в возвращаемом объекте делаем сразу неглубокую копию, а потом перезаписываем свойства на нужные(изменяем их)
+const profilePageReducer = (state = initialState, action) => {
+    //здесь не ставим break, потому что есть в каждом case return(полюбому выходим из switch)
+    switch (action.type) {
+
+        case ADD_NEW_POST:
+             let text = state.postNewText;
+
+            return {
+                ...state,
+                posts: [...state.posts, {id: 5, text: text, src: 'https://avatarko.ru/img/avatar/11/zhivotnye_suslik_10489.jpg'}],
+                postNewText: ''
+            };
 
         case UPDATE_POST_NEW_TEXT:
-            state.postNewText = action.newText;
-            return state;
+
+            return {
+                ...state,
+                postNewText: action.newText
+            };
 
         default: return state;
     }

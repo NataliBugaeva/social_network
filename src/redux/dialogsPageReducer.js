@@ -42,19 +42,56 @@ let initialState = {
     newMessageBody: ''
 };
 
+
+/*const dialogsPageReducer = (state = initialState, action) => {
+    //наша задача менять не сам state, а его копию. И возвращать потом эту измененную копию, поэтому рефакторим код следующим образом
+    let stateCopy = {
+        ...state,
+        messages: [...state.messages]
+    };
+
+    switch (action.type) {
+
+        case UPDATE_MESSAGE_BODY_ACTION_CREATOR: {
+
+            stateCopy.newMessageBody = action.newMessage;
+            return stateCopy;
+        }
+
+        case ADD_NEW_MESSAGE_BODY_ACTION_CREATOR: {
+
+            let messageBody = stateCopy.newMessageBody;
+            stateCopy.messages.push({id: 6, text: messageBody, name: 'User'});
+            stateCopy.newMessageBody = '';
+            return stateCopy;
+        }
+
+        default: return state;
+    }
+};*/
+
+//наша задача менять не сам state, а его копию. И возвращать потом эту измененную копию, поэтому рефакторим код следующим образом
+//в каждом case делаем свою копию и возвращаем ее сразу же(все действия сразу в return)
+//мы в возвращаемом объекте делаем сразу неглубокую копию, а потом перезаписываем свойства на нужные(изменяем их)
 const dialogsPageReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
         case UPDATE_MESSAGE_BODY_ACTION_CREATOR:
-            state.newMessageBody = action.newMessage;
-            return state;
+
+            return {
+                ...state,
+                newMessageBody: action.newMessage
+            };
 
         case ADD_NEW_MESSAGE_BODY_ACTION_CREATOR:
             let messageBody = state.newMessageBody;
-            state.messages.push({id: 6, text: messageBody, name: 'User' });
-            state.newMessageBody = '';
-            return state;
+
+            return {
+                ...state,
+                messages: [...state.messages, {id: 6, text: messageBody, name: 'User'}],
+                newMessageBody: ''
+            };
 
         default: return state;
     }
