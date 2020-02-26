@@ -1,6 +1,8 @@
 import React from "react";
 import n from "./user.module.css";
 
+import userImage from '../../../../images/User-icon.png';
+
 const User = (props) => {
 
     const followUser = () => {
@@ -16,9 +18,9 @@ const User = (props) => {
     return (
         <div className={n.user}>
             <div className={n.user_foto}>
-                <div className={n.foto}><img src={props.src} alt=""/></div>
+                <div className={n.foto}><img src={ (props.smallPhoto) ? props.smallPhoto : userImage }  alt=""/></div>
                {/*здесь вставила тернарный оператор для отображения нужной кнопки*/}
-                { (!props.follow) ? <button onClick={followUser}>Follow</button> :
+                { (!props.followed) ? <button onClick={followUser}>Follow</button> :
                                    <button onClick={unfollowUser}>Unfollow</button> }
 
             </div>
@@ -29,12 +31,12 @@ const User = (props) => {
                         {props.name}
                     </p>
                     <p>
-                        {props.country}
+                        {"props.country"}
                     </p>
                 </div>
 
                 <div>
-                    {props.city}
+                    {"props.city"}
                 </div>
 
                 <div>
