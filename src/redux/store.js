@@ -1,6 +1,7 @@
 import profilePageReducer from './profilePageReducer';
 import dialogsPageReducer from "./dialogsPageReducer";
 import asidePartReducer from "./asidePartReducer";
+import usersPageReducer from "./usersPageReducer";
 
 let store = {
 
@@ -66,6 +67,38 @@ let store = {
             ],
             newMessageBody: ''
         },
+
+        usersPage: {
+            users: [
+                {
+                    id: 1,
+                    name: 'Pit',
+                    location: {country: 'USA', city: 'Washington'},
+                    follow: false,
+                    src: 'https://www.schekino.net/forum/download/file.php?avatar=1758_1310800757.png',
+                    status: 'Looking for new job.'
+                },
+
+                {
+                    id: 2,
+                    name: 'Stive',
+                    location: {country: 'USA', city: 'Chicago'},
+                    follow: false,
+                    src: 'https://price-altai.ru/img/avatars/13688.gif',
+                    status: 'Looking for new friends.'
+                },
+
+                {
+                    id: 3,
+                    name: 'Jhon',
+                    location: {country: 'USA', city: 'New York'},
+                    follow: false,
+                    src: 'https://99px.ru/sstorage/1/2011/03/image_12303111114383936231.gif',
+                    status: 'Hey everybody!!!'
+                }
+                ]
+        },
+
         asidePart: {
             friends: [
                 {
@@ -107,6 +140,7 @@ let store = {
 
         this._state.profilePage = profilePageReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsPageReducer(this._state.dialogsPage, action);
+        this._state.usersPage = usersPageReducer(this._state.usersPage, action);
         this._state.asidePart = asidePartReducer(this._state.asidePart, action);
 
         this._callSubscriber(this._state);

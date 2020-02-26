@@ -9,7 +9,7 @@ const Menu = (props) => {
 
             <MenuItem path="/profile" menuItemName="Profile"/>
             <MenuItem path="/dialogs" menuItemName="Message"/>
-            <MenuItem path="/news" menuItemName="News"/>
+            <MenuItem path="/users" menuItemName="Users"/>
 
         </div>
     );

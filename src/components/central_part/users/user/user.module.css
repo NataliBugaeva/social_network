@@ -1,0 +1,40 @@
+.user {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  margin: 10px 0; }
+  .user_foto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    min-width: 120px; }
+    .user_foto .foto {
+      border: 1px solid blueviolet;
+      border-radius: 7px;
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px; }
+      .user_foto .foto img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 7px; }
+    .user_foto button {
+      display: block;
+      width: 100px;
+      padding: 5px;
+      background-color: #000;
+      color: #ffbffd; }
+  .user_info {
+    width: 78%;
+    border: 1px solid blueviolet;
+    border-radius: 7px;
+    padding: 5px;
+    margin-left: 2%; }
+    .user_info > div:nth-child(1) {
+      display: flex;
+      justify-content: space-between; }
+    .user_info > div:nth-child(2) {
+      margin: 3px 0 40px;
+      text-align: end; }

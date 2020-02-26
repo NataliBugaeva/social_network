@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="464af6ce-2b3c-4500-bfd2-465bf72c36d1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/central_part/users/users.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/central_part/users/users.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/central_part/users/users.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/central_part/profile/posts/posts_new/postsNewContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/central_part/profile/posts/posts_new/postsNewContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/dialogsPageReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/dialogsPageReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/profilePageReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/profilePageReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/central_part/aside/menu/menu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/central_part/aside/menu/menu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/central_part/start/start.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/central_part/start/start.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/central_part/start/start.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/central_part/сentralPart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/central_part/сentralPart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reduxStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reduxStore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +100,7 @@
       <workItem from="1581321056096" duration="30065000" />
       <workItem from="1581430627101" duration="3556000" />
       <workItem from="1581437229246" duration="26308000" />
-      <workItem from="1582024464153" duration="104691000" />
+      <workItem from="1582024464153" duration="128508000" />
     </task>
     <servers />
   </component>
@@ -112,5 +119,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/redux/store.js</url>
+          <line>7</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
