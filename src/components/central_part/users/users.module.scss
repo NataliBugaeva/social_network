@@ -14,3 +14,21 @@
   background-color: #000;
   color: #ffbffd;
 }
+
+.selected {
+  font-weight: bold;
+}
+
+.pages {
+  display: flex;
+  flex-wrap: wrap;
+
+  span {
+    display: inline-block;
+    margin: 0 2px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

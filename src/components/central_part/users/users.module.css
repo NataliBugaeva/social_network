@@ -11,3 +11,15 @@
   padding: 5px;
   background-color: #000;
   color: #ffbffd; }
+
+.selected {
+  font-weight: bold; }
+
+.pages {
+  display: flex;
+  flex-wrap: wrap; }
+  .pages span {
+    display: inline-block;
+    margin: 0 2px; }
+    .pages span:hover {
+      cursor: pointer; }

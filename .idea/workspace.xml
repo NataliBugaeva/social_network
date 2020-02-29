@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="464af6ce-2b3c-4500-bfd2-465bf72c36d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/central_part/users/user/user.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/central_part/users/user/user.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/central_part/users/user/user.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/central_part/users/user/user.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/central_part/users/user/user.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/central_part/users/user/user.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/central_part/users/users.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/central_part/users/users.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/central_part/users/users.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/central_part/users/users.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/central_part/users/users.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/central_part/users/users.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/central_part/users/usersContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/central_part/users/usersContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/usersPageReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/usersPageReducer.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -99,7 +96,7 @@
       <workItem from="1581430627101" duration="3556000" />
       <workItem from="1581437229246" duration="26308000" />
       <workItem from="1582024464153" duration="132691000" />
-      <workItem from="1582718881637" duration="4904000" />
+      <workItem from="1582718881637" duration="36705000" />
     </task>
     <servers />
   </component>
