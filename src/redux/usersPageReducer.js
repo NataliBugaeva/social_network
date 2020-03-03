@@ -2,7 +2,8 @@ const FOLLOW = 'FOLLOW',
       UNFOLLOW = 'UNFOLLOW',
       SET_USERS = 'SET-USERS',
       SET_SELECTED_PAGE = 'SET-SELECTED-PAGE',
-      SET_TOTAL_USERS_AMOUNT = 'SET-TOTAL-USERS-AMOUNT';
+      SET_TOTAL_USERS_AMOUNT = 'SET-TOTAL-USERS-AMOUNT',
+      SET_PRELOADER = 'SET-PRELOADER';
 
 let initialState = {
     users: [
@@ -35,8 +36,9 @@ let initialState = {
     ],
     usersAmount: 0,
     pageSize: 50,
-    pageSelected: 1
-}
+    pageSelected: 1,
+    isFetching: true
+};
 
 
 
@@ -54,7 +56,7 @@ const usersPageReducer = (state = initialState, action) => {
                         return user;
 
                 })
-            }
+            };
 
         case UNFOLLOW:
             return {
@@ -66,26 +68,32 @@ const usersPageReducer = (state = initialState, action) => {
                     return user;
 
                 })
-            }
+            };
         //в action придут пользователи с сервака. мы сделаем копию с новыми пользователями
         //делаю копию state и перезатираю весь массив, который был в users
         case SET_USERS:
             return {
                 ...state,
                 users: [...action.users]
-            }
+            };
         //после того, как придут данные с сервака, мы запускаем эту ф-цию и она делает копию State сновыми данными
         case SET_TOTAL_USERS_AMOUNT:
             return {
                 ...state,
                 usersAmount: action.totalUsersAmount
-            }
+            };
 
         case SET_SELECTED_PAGE:
             return {
                 ...state,
                 pageSelected: action.pageSelected
-            }
+            };
+
+        case SET_PRELOADER:
+            return {
+                ...state,
+                isFetching: action.isFetching
+            };
 
         default: return state;
 
@@ -96,10 +104,22 @@ const usersPageReducer = (state = initialState, action) => {
 
 export default usersPageReducer;
 
-export const followActionCreator = (userId) => ({type: FOLLOW, userId: userId});
+/*export const followActionCreator = (userId) => ({type: FOLLOW, userId: userId});
 export const unfollowActionCreator = (userId) => ({type: UNFOLLOW, userId: userId});
 //это наш action, который будет возвращать нам даныые(наших юзеров с сервака)
 export const setUsersActionCreator = (users) => ({type: SET_USERS, users: users});
 
 export const setTotalUsersAmountActionCreator = (totalUsersAmount) => ({type: SET_TOTAL_USERS_AMOUNT, totalUsersAmount: totalUsersAmount});
 export const setSelectedPageActionCreator = (pageSelected) => ({type: SET_SELECTED_PAGE, pageSelected: pageSelected });
+
+export const setPreloaderActionCreator = (isFetching) => ({type: SET_PRELOADER, isFetching: isFetching});*/
+
+export const follow = (userId) => ({type: FOLLOW, userId: userId});
+export const unfollow = (userId) => ({type: UNFOLLOW, userId: userId});
+//это наш action, который будет возвращать нам даныые(наших юзеров с сервака)
+export const setUsers = (users) => ({type: SET_USERS, users: users});
+
+export const setTotalUsersAmount = (totalUsersAmount) => ({type: SET_TOTAL_USERS_AMOUNT, totalUsersAmount: totalUsersAmount});
+export const setSelectedPage = (pageSelected) => ({type: SET_SELECTED_PAGE, pageSelected: pageSelected });
+
+export const setPreloader = (isFetching) => ({type: SET_PRELOADER, isFetching: isFetching});
