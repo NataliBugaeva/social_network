@@ -4,9 +4,14 @@ import n from './post.module.css';
 import Avatar from "../../../user/avatar/avatar";
 
 const Post = (props) => {
+
     return (
         <div className={n.post}>
-            <Avatar src={`${props.src}`} />
+            {/*<Avatar src={`${props.src}`} />*/}
+
+            <div className={n.avatar}>
+                <img src={`${props.src}`} alt=""/>
+            </div>
 
             <div className={n.post_title}>
                 {props.text}

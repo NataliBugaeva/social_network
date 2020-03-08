@@ -5,10 +5,8 @@ import n from './userDescription.module.css';
 const UserDescription = (props) => {
     return (
         <div className={n.user_description}>
-            <h2>Natali Bugaeva</h2>
-            <p>Date of birth: 26.12.1991</p>
-            <p>City: Minsk</p>
-            <p>Education: Academy of Management</p>
+            <h2>Name: {props.profile ? props.profile.fullName : ''}</h2>
+            <p>About me: {props.profile ? props.profile.aboutMe : ''}</p>
         </div>
     );
 }

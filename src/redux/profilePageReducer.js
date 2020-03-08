@@ -1,9 +1,11 @@
 //это переменные для функции, которые возвращают объекты для dispatch
 const UPDATE_POST_NEW_TEXT = 'UPDATE-POST-NEW-TEXT',
-      ADD_NEW_POST = 'ADD-NEW-POST';
+      ADD_NEW_POST = 'ADD-NEW-POST',
+      SET_PROFILE = 'SET-PROFILE';
 
 //переменная, содержит дефолтное значение для параметра state (передаем в state значение по умолчанию)
 let initialState = {
+    /*profileUserAvatar: 'https://img0.liveinternet.ru/images/attach/b/3/11/198/11198376_5832762_5212630_0000004974article.jpg',*/
     posts: [
         {
             id: 1,
@@ -23,7 +25,8 @@ let initialState = {
             src: 'https://avatarko.ru/img/avatar/11/zhivotnye_kot_shlyapa_pirat_10325.jpg'
         }
     ],
-    postNewText: 'it-kamasutra'
+    postNewText: 'it-kamasutra',
+    profile: null
 
 };
 
@@ -80,6 +83,12 @@ const profilePageReducer = (state = initialState, action) => {
                 postNewText: action.newText
             };
 
+        case SET_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            };
+
         default: return state;
     }
 };
@@ -87,5 +96,7 @@ const profilePageReducer = (state = initialState, action) => {
 //эти функции возвращают сам объект action для dispatch. И при вызове dispatch в параметре мы вызываем эти функции
 export const onPostChangeActionCreator = (text) => ({type: UPDATE_POST_NEW_TEXT, newText: text});
 export const showNewPostActionCreator = () => ({type: ADD_NEW_POST});
+
+export const setProfileActionCreator = (profile) => ({type: SET_PROFILE, profile: profile});
 
 export default profilePageReducer;

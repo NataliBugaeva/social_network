@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Aside from "./aside/aside";
-import Profile from "./profile/profile";
+import ProfileContainer from "./profile/profileContainer";
 import Dialogs from "./dialogs/dialogs";
 import UsersContainer from "./users/usersContainer";
 
@@ -15,7 +15,8 @@ const CentralPart = (props) => {
             <Aside />
 
             <div className={n.central_part_content}>
-                <Route exact path="/profile" render={ () => <Profile /> } />
+                {/*<Route  path="/profile" render={ () => <Profile /> } />*/}
+                <Route  path="/profile/:userId?" render={ () => <ProfileContainer /> } />
                 <Route exact path="/dialogs" render={ () => <Dialogs /> } />
                 <Route exact path="/users" render={ () => <UsersContainer /> } />
             </div>

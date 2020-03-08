@@ -84,12 +84,10 @@ class UsersClassComponent extends React.Component {
 
     render() {
 
-
-
         return (
                 <UsersFuncComponent pageChange={this.pageChange} totalUsersAmount={this.props.totalUsersAmount} pageSize={this.props.pageSize}
                                     pageSelected={this.props.pageSelected} allUsers={this.props.allUsers}
-                                    followUser={this.props.followUser} unfollowUser={this.props.unfollowUser} setUsers={this.props.setUsers}
+                                    followUser={this.props.follow} unfollowUser={this.props.unfollow} setUsers={this.props.setUsers}
                                     isFetching={this.props.isFetching} />
         )
     }

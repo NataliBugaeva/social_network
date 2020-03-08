@@ -7,10 +7,16 @@
   }
 }
 
-.colored_circle {
+.avatar {
   width: 30px;
   height: 30px;
   margin-right: 20px;
   border-radius: 50px;
   background-color: #4164d0;
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+  }
 }

@@ -3,6 +3,8 @@ import n from "./user.module.css";
 
 import userImage from '../../../../images/User-icon.png';
 
+import {NavLink} from "react-router-dom";
+
 const User = (props) => {
 
     const followUser = () => {
@@ -18,7 +20,12 @@ const User = (props) => {
     return (
         <div className={n.user}>
             <div className={n.user_foto}>
-                <div className={n.foto}><img src={ (props.smallPhoto) ? props.smallPhoto : userImage }  alt=""/></div>
+
+                <div className={n.foto}>
+                    <NavLink to={'/profile/' + props.id}>
+                        <img src={ (props.smallPhoto) ? props.smallPhoto : userImage }  alt=""/>
+                    </NavLink>
+                </div>
                {/*здесь вставила тернарный оператор для отображения нужной кнопки*/}
                 { (!props.followed) ? <button onClick={followUser}>Follow</button> :
                                    <button onClick={unfollowUser}>Unfollow</button> }
