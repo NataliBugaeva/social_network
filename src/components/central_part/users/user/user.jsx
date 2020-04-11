@@ -4,17 +4,41 @@ import n from "./user.module.css";
 import userImage from '../../../../images/User-icon.png';
 
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 const User = (props) => {
 
     const followUser = () => {
         let userId = props.id;
-        props.followUser(userId);
+
+        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
+        {
+            withCredentials: true,
+            headers: {
+                "API-KEY": "438b43d8-c9fc-4009-a5e7-db75e710334c"
+            }
+        }).then( response => {
+
+            if(response.data.resultCode === 0) {
+                props.followUser(userId);
+            }
+        });
     };
 
     const unfollowUser = () => {
         let userId = props.id;
-        props.unfollowUser(userId);
+
+        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
+                withCredentials: true,
+            headers: {
+                "API-KEY": "438b43d8-c9fc-4009-a5e7-db75e710334c"
+            }
+            }).then( response => {
+
+            if(response.data.resultCode === 0) {
+                props.unfollowUser(userId);
+            }
+        });
     };
 
     return (

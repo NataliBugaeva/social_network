@@ -13,6 +13,7 @@ import {
 //импортируем все, что есть в этой библиотеке. и ко всему будем обращаться через имя axios
 import * as axios from "axios";
 import UsersFuncComponent from "./usersFuncComponent";
+import {usersAPI} from "../../../api/api";
 
 
 
@@ -53,13 +54,11 @@ class UsersClassComponent extends React.Component {
 
     componentDidMount() {
         this.props.setPreloader(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.pageSelected}&count=${this.props.pageSize}`).then(response => {
-
+       usersAPI.getUsers(this.props.pageSelected, this.props.pageSize).then(data => {
             //передала сюда юзеров и общее их количество из ответа сервака
             this.props.setPreloader(false);
-            this.props.setUsers(response.data.items);
-            this.props.setTotalUsersAmount(response.data.totalCount);
-
+            this.props.setUsers(data.items);
+            this.props.setTotalUsersAmount(data.totalCount);
         });
     }
 
@@ -73,11 +72,11 @@ class UsersClassComponent extends React.Component {
             this.props.setSelectedPage(+target.innerText);
         }
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${+target.innerText}&count=${this.props.pageSize}`).then(response => {
+        usersAPI.getUsers(+target.innerText, this.props.pageSize).then(data => {
             this.props.setPreloader(false);
             //передала сюда юзеров и общее их количество из ответа сервака
-            this.props.setUsers(response.data.items);
-            this.props.setTotalUsersAmount(response.data.totalCount);
+            this.props.setUsers(data.items);
+            this.props.setTotalUsersAmount(data.totalCount);
         });
     };
 
@@ -140,7 +139,6 @@ let mapStateToProps = (state) => {
 
 
 const UsersContainer = connect(mapStateToProps,
-                                  { follow, unfollow, setUsers,
-                                   setSelectedPage, setTotalUsersAmount, setPreloader})(UsersClassComponent);
+                { follow, unfollow, setUsers, setSelectedPage, setTotalUsersAmount, setPreloader})(UsersClassComponent);
 
 export default UsersContainer;

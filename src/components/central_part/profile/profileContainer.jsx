@@ -8,6 +8,8 @@ import * as axios from "axios";
 
 import {withRouter} from 'react-router-dom';
 
+import {profileAPI} from "../../../api/api";
+
 //короче, можно делать так, как раньше, с постами делалал, для нужной компоненты контейнерную, а не общуюю на весь profile. Потом переделай!!!
 class ProfileClassContainer extends React.Component {
 
@@ -19,15 +21,11 @@ componentDidMount() {
 
        let userId = this.props.match.params.userId;
 
-      /* if (!userId) {
-           userId = 2;
-       }*/
-
       userId = (!userId) ? 2 : userId;
 
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
+      profileAPI.getProfile(userId).then(data => {
 
-        this.props.setProfileActionCreator(response.data);
+        this.props.setProfileActionCreator(data);
     });
 }
 
@@ -45,6 +43,7 @@ const mapStateToProps = (state) => ({
 
 });
 
+//для получения урла в контейнерной компоненте
 let ProfileClassContainerWithUrl = withRouter(ProfileClassContainer);
 
 const ProfileContainer = connect(mapStateToProps, {setProfileActionCreator})(ProfileClassContainerWithUrl);
