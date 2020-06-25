@@ -6,39 +6,50 @@ import userImage from '../../../../images/User-icon.png';
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
 
+import {usersAPI} from "../../../../api/api";
+
 const User = (props) => {
 
     const followUser = () => {
-        let userId = props.id;
+       props.followSuccess(props.id);
+       /* let userId = props.id;
+        props.toggleFollowingProgress(true, userId);
 
-        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
+        usersAPI.followUser(userId)
+        /!*axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
         {
             withCredentials: true,
             headers: {
                 "API-KEY": "438b43d8-c9fc-4009-a5e7-db75e710334c"
             }
-        }).then( response => {
+        })*!/.then( response => {
 
             if(response.data.resultCode === 0) {
                 props.followUser(userId);
             }
-        });
+            props.toggleFollowingProgress(false, userId);
+        });*/
     };
 
     const unfollowUser = () => {
-        let userId = props.id;
+        props.unfollowSuccess(props.id);
+     /*   let userId = props.id;
+        props.toggleFollowingProgress(true, userId);
 
-        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
+        usersAPI.unfollowUser(userId)
+        /!*axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
                 withCredentials: true,
             headers: {
                 "API-KEY": "438b43d8-c9fc-4009-a5e7-db75e710334c"
             }
-            }).then( response => {
+            })*!/
+            .then( response => {
 
             if(response.data.resultCode === 0) {
                 props.unfollowUser(userId);
             }
-        });
+            props.toggleFollowingProgress(false, userId);
+        });*/
     };
 
     return (
@@ -50,9 +61,8 @@ const User = (props) => {
                         <img src={ (props.smallPhoto) ? props.smallPhoto : userImage }  alt=""/>
                     </NavLink>
                 </div>
-               {/*здесь вставила тернарный оператор для отображения нужной кнопки*/}
-                { (!props.followed) ? <button onClick={followUser}>Follow</button> :
-                                   <button onClick={unfollowUser}>Unfollow</button> }
+                { (!props.followed) ? <button  disabled={props.followingInProgress.some(id => id === props.id)} onClick={followUser} >Follow</button> :
+                                      <button  disabled={props.followingInProgress.some(id => id === props.id)} onClick={unfollowUser} >Unfollow</button> }
 
             </div>
 

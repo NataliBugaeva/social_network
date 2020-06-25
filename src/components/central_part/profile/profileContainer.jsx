@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import Profile from "./profile";
 
-import {setProfileActionCreator} from "../../../redux/profilePageReducer";
+import {setProfileActionCreator, getProfileThunkCreator} from "../../../redux/profilePageReducer";
 import * as axios from "axios";
 
 import {withRouter} from 'react-router-dom';
@@ -22,16 +22,17 @@ componentDidMount() {
        let userId = this.props.match.params.userId;
 
       userId = (!userId) ? 2 : userId;
+      this.props.getProfile(userId);
 
-      profileAPI.getProfile(userId).then(data => {
+     /* profileAPI.getProfile(userId).then(data => {
 
         this.props.setProfileActionCreator(data);
-    });
+    });*/
 }
 
     render() {
        //нахрена здесь profile щтдельно прокидывать??
-        return <Profile {...this.props} profile={this.props.profile}/>
+        return <Profile {...this.props} /*profile={this.props.profile}*//>
     }
     
 }
@@ -46,5 +47,5 @@ const mapStateToProps = (state) => ({
 //для получения урла в контейнерной компоненте
 let ProfileClassContainerWithUrl = withRouter(ProfileClassContainer);
 
-const ProfileContainer = connect(mapStateToProps, {setProfileActionCreator})(ProfileClassContainerWithUrl);
+const ProfileContainer = connect(mapStateToProps, {setProfileActionCreator, getProfile: getProfileThunkCreator})(ProfileClassContainerWithUrl);
 export default ProfileContainer;

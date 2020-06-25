@@ -3,12 +3,8 @@ import {connect} from "react-redux";
 /*import UsersClassComponent from "./usersClassComponent";*/
 
 import {
-    follow,
-    unfollow,
-    setUsers,
-    setSelectedPage,
-    setTotalUsersAmount,
-    setPreloader
+    follow, unfollow, setUsers, setSelectedPage, setTotalUsersAmount, setPreloader, toggleFollowingProgress,
+    getUsersThunkCreator, changePageThunkCreator, followUserThunkCreator, unfollowUserThunkCreator
 } from "../../../redux/usersPageReducer";
 //импортируем все, что есть в этой библиотеке. и ко всему будем обращаться через имя axios
 import * as axios from "axios";
@@ -53,19 +49,27 @@ class UsersClassComponent extends React.Component {
     }
 
     componentDidMount() {
-        this.props.setPreloader(true);
+
+        this.props.getUsers(this.props.pageSelected, this.props.pageSize);
+        //этот код мы перенели в thunk в usersPageReducer
+       /* this.props.setPreloader(true);
        usersAPI.getUsers(this.props.pageSelected, this.props.pageSize).then(data => {
             //передала сюда юзеров и общее их количество из ответа сервака
             this.props.setPreloader(false);
             this.props.setUsers(data.items);
             this.props.setTotalUsersAmount(data.totalCount);
-        });
+        });*/
     }
 
     //методы пишем как стрелочные функции, чтобы сохранить контекст вызова
     //переключает странички наши
     //по клику выцепит номер страницы, перекл.чит на новую страницу, в соответсвии с этим номером сделает запрос на сервак, чтоб тот отрисовал нам пользователей для этогой страницы
+
+
+
     pageChange = (event) => {
+        this.props.changePage(event, this.props.pageSize);
+        /*
         this.props.setPreloader(true);
         let target = event.target;
         if (target.tagName === 'SPAN') {
@@ -77,7 +81,7 @@ class UsersClassComponent extends React.Component {
             //передала сюда юзеров и общее их количество из ответа сервака
             this.props.setUsers(data.items);
             this.props.setTotalUsersAmount(data.totalCount);
-        });
+        });*/
     };
 
 
@@ -87,7 +91,9 @@ class UsersClassComponent extends React.Component {
                 <UsersFuncComponent pageChange={this.pageChange} totalUsersAmount={this.props.totalUsersAmount} pageSize={this.props.pageSize}
                                     pageSelected={this.props.pageSelected} allUsers={this.props.allUsers}
                                     followUser={this.props.follow} unfollowUser={this.props.unfollow} setUsers={this.props.setUsers}
-                                    isFetching={this.props.isFetching} />
+                                    isFetching={this.props.isFetching} toggleFollowingProgress={this.props.toggleFollowingProgress}
+                                    followingInProgress={this.props.followingInProgress} followSuccess={this.props.followSuccess}
+                                    unfollowSuccess={this.props.unfollowSuccess}/>
         )
     }
 }
@@ -98,7 +104,8 @@ let mapStateToProps = (state) => {
         totalUsersAmount: state.usersPage.usersAmount,
         pageSize: state.usersPage.pageSize,
         pageSelected: state.usersPage.pageSelected,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 };
 
@@ -136,9 +143,10 @@ let mapStateToProps = (state) => {
 /*const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersClassComponent);*/
 
 
-
-
 const UsersContainer = connect(mapStateToProps,
-                { follow, unfollow, setUsers, setSelectedPage, setTotalUsersAmount, setPreloader})(UsersClassComponent);
+    { follow, unfollow, setUsers, setSelectedPage,
+        setTotalUsersAmount, setPreloader, toggleFollowingProgress,
+        getUsers: getUsersThunkCreator, changePage: changePageThunkCreator,
+        followSuccess: followUserThunkCreator, unfollowSuccess: unfollowUserThunkCreator })(UsersClassComponent);
 
 export default UsersContainer;

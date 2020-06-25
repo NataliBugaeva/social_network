@@ -1,4 +1,6 @@
 //это переменные для функции, которые возвращают объекты для dispatch
+import {profileAPI} from "../api/api";
+
 const UPDATE_POST_NEW_TEXT = 'UPDATE-POST-NEW-TEXT',
       ADD_NEW_POST = 'ADD-NEW-POST',
       SET_PROFILE = 'SET-PROFILE';
@@ -98,5 +100,14 @@ export const onPostChangeActionCreator = (text) => ({type: UPDATE_POST_NEW_TEXT,
 export const showNewPostActionCreator = () => ({type: ADD_NEW_POST});
 
 export const setProfileActionCreator = (profile) => ({type: SET_PROFILE, profile: profile});
+
+export const getProfileThunkCreator = (userId) => {
+    return (dispatch) => {
+        profileAPI.getProfile(userId).then(response => {
+
+            dispatch(setProfileActionCreator(response.data));
+        });
+    }
+};
 
 export default profilePageReducer;

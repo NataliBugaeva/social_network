@@ -4,6 +4,7 @@ import Aside from "./aside/aside";
 import ProfileContainer from "./profile/profileContainer";
 import Dialogs from "./dialogs/dialogs";
 import UsersContainer from "./users/usersContainer";
+import Login from './login/login';
 
 import n from './centralPart.module.css';
 import {Route} from "react-router-dom";
@@ -19,6 +20,7 @@ const CentralPart = (props) => {
                 <Route  path="/profile/:userId?" render={ () => <ProfileContainer /> } />
                 <Route exact path="/dialogs" render={ () => <Dialogs /> } />
                 <Route exact path="/users" render={ () => <UsersContainer /> } />
+                <Route exact path="/login" render={ () => <Login /> } />
             </div>
         </div>
     );

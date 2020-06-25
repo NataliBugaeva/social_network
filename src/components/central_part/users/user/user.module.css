@@ -24,6 +24,8 @@
       padding: 5px;
       background-color: #000;
       color: #ffbffd; }
+      .user_foto button:disabled {
+        opacity: 0.5; }
   .user_info {
     width: 78%;
     border: 1px solid blueviolet;

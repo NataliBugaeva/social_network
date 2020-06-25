@@ -34,10 +34,12 @@ const UsersFuncComponent = (props) => {
                 {/*возвратила разметку таким образом, потому что она у меня через переменную не пошла(не отрисовалась)
                     т.е когда я переменную засунула в свойства, а здесь ее отрисовывала*/}
                 { props.allUsers.map( (elem) => <User followUser={props.followUser} unfollowUser={props.unfollowUser}
-                                                           setUsers={props.setUsers} id={elem.id} followed={elem.followed}
-                                                           name={elem.name}  status={elem.status}
-                                                           smallPhoto={elem.photos.small} largePhoto={elem.photos.large}/> )}
-
+                                                      toggleFollowingProgress={props.toggleFollowingProgress}
+                                                      setUsers={props.setUsers} id={elem.id} followed={elem.followed}
+                                                      name={elem.name}  status={elem.status}
+                                                      smallPhoto={elem.photos.small} largePhoto={elem.photos.large}
+                                                      followingInProgress={props.followingInProgress}
+                                                      followSuccess={props.followSuccess} unfollowSuccess={props.unfollowSuccess}/>)}
 
             </div>
 

@@ -1,9 +1,12 @@
+import {usersAPI} from "../api/api";
+
 const FOLLOW = 'FOLLOW',
       UNFOLLOW = 'UNFOLLOW',
       SET_USERS = 'SET-USERS',
       SET_SELECTED_PAGE = 'SET-SELECTED-PAGE',
       SET_TOTAL_USERS_AMOUNT = 'SET-TOTAL-USERS-AMOUNT',
-      SET_PRELOADER = 'SET-PRELOADER';
+      SET_PRELOADER = 'SET-PRELOADER',
+      TOGGLE_IS_FOLLOWIN_PROGRESS = 'TOGGLE-IS-FOLLOWIN-PROGRESS';
 
 let initialState = {
     users: [
@@ -37,7 +40,8 @@ let initialState = {
     usersAmount: 0,
     pageSize: 50,
     pageSelected: 1,
-    isFetching: true
+    isFetching: true,
+    followingInProgress: [] //этим будем дизейблить кнопку "подписаться\отписаться"
 };
 
 
@@ -95,6 +99,14 @@ const usersPageReducer = (state = initialState, action) => {
                 isFetching: action.isFetching
             };
 
+        case TOGGLE_IS_FOLLOWIN_PROGRESS:
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter(id => id !== action.userId)
+            };
+
         default: return state;
 
     }
@@ -123,3 +135,77 @@ export const setTotalUsersAmount = (totalUsersAmount) => ({type: SET_TOTAL_USERS
 export const setSelectedPage = (pageSelected) => ({type: SET_SELECTED_PAGE, pageSelected: pageSelected });
 
 export const setPreloader = (isFetching) => ({type: SET_PRELOADER, isFetching: isFetching});
+export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWIN_PROGRESS, isFetching, userId});
+
+
+
+export const getUsersThunkCreator = (pageSelected, pageSize) => {
+    return (dispatch) => {
+
+        dispatch(setPreloader(true));
+        usersAPI.getUsers(pageSelected, pageSize).then(data => {
+            //передала сюда юзеров и общее их количество из ответа сервака
+            dispatch(setPreloader(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersAmount(data.totalCount));
+        });
+    }
+};
+
+export const changePageThunkCreator = (event, pageSize) => {
+    return (dispatch) => {
+
+        dispatch(setPreloader(true));
+        let target = event.target;
+        if (target.tagName === 'SPAN') {
+            dispatch(setSelectedPage(+target.innerText));
+        }
+
+        usersAPI.getUsers(+target.innerText, pageSize).then(data => {
+            dispatch(setPreloader(false));
+            //передала сюда юзеров и общее их количество из ответа сервака
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersAmount(data.totalCount));
+        });
+    }
+};
+
+export const followUserThunkCreator = (userId) => (dispatch) => {
+
+    dispatch(toggleFollowingProgress(true, userId));
+
+    usersAPI.followUser(userId)
+    /*axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
+    {
+        withCredentials: true,
+        headers: {
+            "API-KEY": "438b43d8-c9fc-4009-a5e7-db75e710334c"
+        }
+    })*/.then( response => {
+
+        if(response.data.resultCode === 0) {
+            dispatch(follow(userId));
+        }
+        dispatch(toggleFollowingProgress(false, userId));
+    });
+};
+
+export const unfollowUserThunkCreator = (userId) => (dispatch) => {
+
+    dispatch(toggleFollowingProgress(true, userId));
+
+    usersAPI.unfollowUser(userId)
+    /*axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {
+            withCredentials: true,
+        headers: {
+            "API-KEY": "438b43d8-c9fc-4009-a5e7-db75e710334c"
+        }
+        })*/
+        .then( response => {
+
+            if(response.data.resultCode === 0) {
+                dispatch(unfollow(userId));
+            }
+            dispatch(toggleFollowingProgress(false, userId));
+        });
+};
